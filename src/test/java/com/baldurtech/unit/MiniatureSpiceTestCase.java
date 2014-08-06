@@ -80,11 +80,35 @@ public class MiniatureSpiceTestCase {
     }
 
     public static void assertEquals(Object expectedResult, Object actualResult) {
+        Boolean testResult = equals(expectedResult, actualResult);
+
+        assertEquals(expectedResult, actualResult, testResult);
+    }
+
+    private static boolean equals(Object expectedResult, Object actualResult) {
         Boolean testResult = false;
         if(expectedResult == null && actualResult == null) {
             testResult = true;
         } else if(expectedResult != null){
             testResult = expectedResult.equals(actualResult);
+        }
+        return testResult;
+    }
+
+    public static void assertArrayEquals(Object[] expectedResult, Object[] actualResult) {
+        Boolean testResult = false;
+        testResult = actualResult != null;
+        testResult = testResult && expectedResult.length == actualResult.length;
+        if(testResult) {
+            for(int index=0; index<expectedResult.length; index++) {
+                testResult = equals(expectedResult[index], actualResult[index]);
+                if(! testResult) {
+                    System.out.println("  Array[" + index + "] expected `" + (expectedResult[index] == null?"NULL":expectedResult[index]) + "`, but `" + (actualResult[index] == null?"NULL":actualResult[index]) + "`");
+                    break;
+                }
+            }
+        } else {
+            System.err.println("  The length of both arrays not equals.");
         }
         assertEquals(expectedResult, actualResult, testResult);
     }
