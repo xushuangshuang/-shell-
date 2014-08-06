@@ -11,4 +11,8 @@ public class ContactRepository {
     public void deleteById(Long id) {
         db.executeUpdate("DELETE FROM contact WHERE id=" + id);
     }
+
+    public void update(Contact contact) {
+
+    }
 }
