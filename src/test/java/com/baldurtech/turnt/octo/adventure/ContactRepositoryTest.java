@@ -13,13 +13,3 @@ public class ContactRepositoryTest extends MiniatureSpiceTestCase {
         assertEquals("DELETE FROM contact WHERE id=1", db.executeUpdateParam);
     }
 }
-
-class DatabaseManagerMock implements DatabaseManager {
-    public String executeUpdateParam;
-    public int executeUpdateShouldReturn = 0;
-
-    public int executeUpdate(String sql) {
-        executeUpdateParam = sql;
-        return executeUpdateShouldReturn;
-    }
-}
