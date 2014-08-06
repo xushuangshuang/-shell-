@@ -1,4 +1,4 @@
-bearded-octo-hipster
+turnt-octo-adventure
 ====================
 
-手工建立了一个基本的程序结构
+学习如何测试操作数据库的相关代码
