@@ -10,7 +10,7 @@ public class ContactRepositoryTest extends MiniatureSpiceTestCase {
 
         contactRepository.deleteById(1L);
 
-        assertEquals("DELETE FROM contact where id=1", db.executeUpdateParam);
+        assertEquals("DELETE FROM contact WHERE id=1", db.executeUpdateParam);
     }
 }
 
