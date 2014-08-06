@@ -13,6 +13,16 @@ public class ContactRepository {
     }
 
     public void update(Contact contact) {
-        db.executeUpdate("UPDATE contact SET email='tom@baldurtech.com', home_address=NULL, job=NULL, job_level=NULL, memo=NULL, mobile='13900001111', name='Tom Hanks', office_address=NULL, vpmn=NULL WHERE id=1");
+        String sql = "UPDATE contact SET email=?, home_address=?, job=?, job_level=?, memo=?, mobile=?, name=?, office_address=?, vpmn=? WHERE id=?";
+        db.executeUpdate(sql, contact.getEmail()
+                         , contact.getHomeAddress()
+                         , contact.getJob()
+                         , contact.getJobLevel()
+                         , contact.getMemo()
+                         , contact.getMobile()
+                         , contact.getName()
+                         , contact.getOfficeAddress()
+                         , contact.getVpmn()
+                         , contact.getId());
     }
 }
