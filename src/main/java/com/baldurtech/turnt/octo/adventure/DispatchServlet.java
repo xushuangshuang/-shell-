@@ -14,6 +14,7 @@ public class DispatchServlet extends HttpServlet {
     }
 
     public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
+    public String methodSuffix = ".jsp";
 
     public String getActionClassNameByUri(String uri) {
         String[] uriParts = splitBySlash(uri);
@@ -28,7 +29,7 @@ public class DispatchServlet extends HttpServlet {
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return uriParts[indexOfMethodName];
+        return uriParts[indexOfMethodName].replace(methodSuffix, "");
     }
 
     public String[] splitBySlash(String uri) {
