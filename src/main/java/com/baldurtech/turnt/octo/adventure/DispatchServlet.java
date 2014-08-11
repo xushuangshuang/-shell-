@@ -22,6 +22,10 @@ public class DispatchServlet extends HttpServlet {
         return defaultPackageName + "." + actionClassName + "Action";
     }
 
+    public String getMethodNameByUri(String uri) {
+        return null;
+    }
+
     public String capitalize(String str) {
         return str.substring(0, 1).toUpperCase()
             + str.substring(1);
