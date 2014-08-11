@@ -14,7 +14,7 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
 
     public void test_uri_contact_应该由ContactAction来处理() {
         assertEquals(contactActionClassName
-                     , dispatchServlet.getActionClassNameByUri("/contact"));
+                     , dispatchServlet.getActionClassNameByUri("/contact.jsp"));
     }
 
     public void test_uri_contact_show_的处理方法是show() {
@@ -22,10 +22,6 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
     }
 
     public void test_uri_contact_的处理方法是index() {
-        assertEquals("index", dispatchServlet.getMethodNameByUri("/contact"));
-    }
-
-    public void test_uri_contact_with_slash_suffix_的处理方法是index() {
-        assertEquals("index", dispatchServlet.getMethodNameByUri("/contact/"));
+        assertEquals("index", dispatchServlet.getMethodNameByUri("/contact.jsp"));
     }
 }
