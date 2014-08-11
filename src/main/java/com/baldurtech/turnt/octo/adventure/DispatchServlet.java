@@ -16,19 +16,23 @@ public class DispatchServlet extends HttpServlet {
     public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
 
     public String getActionClassNameByUri(String uri) {
-        String[] uriParts = uri.split("/");
+        String[] uriParts = splitBySlash(uri);
         Integer indexOfActionClassName = 1;
         String actionClassName = capitalize(uriParts[indexOfActionClassName]);
         return defaultPackageName + "." + actionClassName + "Action";
     }
 
     public String getMethodNameByUri(String uri) {
-        String[] uriParts = uri.split("/");
+        String[] uriParts = splitBySlash(uri);
         Integer indexOfMethodName = 2;
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
         return uriParts[indexOfMethodName];
+    }
+
+    public String[] splitBySlash(String uri) {
+        return uri.split("/");
     }
 
     public String capitalize(String str) {
