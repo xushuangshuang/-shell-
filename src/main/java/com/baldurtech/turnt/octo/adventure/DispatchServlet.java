@@ -1,5 +1,7 @@
 package com.baldurtech.turnt.octo.adventure;
 
+import java.util.Map;
+
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ public class DispatchServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException {
         try {
-            String uri = request.getRequestURI();
+            String uri = getUri(request);
             ActionContext actionContext = new ActionContextImpl(getServletContext(), request, response);
             Class actionClass = getActionByUri(uri);
             @SuppressWarnings("unchecked")
@@ -23,13 +25,33 @@ public class DispatchServlet extends HttpServlet {
             Action actionInstance = (Action) actionConstructor.newInstance(actionContext);
             @SuppressWarnings("unchecked")
             Method method = actionClass.getDeclaredMethod(getMethodNameByUri(uri));
-            method.invoke(actionInstance);
+            Object returnValue = method.invoke(actionInstance);
+            if(null == returnValue) {
+                return;
+            }
+
+            if(returnValue instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> dataModel = (Map<String, Object>)returnValue;
+                for(String key: dataModel.keySet()) {
+                    request.setAttribute(key, dataModel.get(key));
+                }
+            } else {
+                request.setAttribute("data", returnValue);
+            }
+            getServletContext()
+                .getRequestDispatcher(getViewPage(uri))
+                .forward(request, response);
         } catch(Exception e) {
         }
     }
 
     public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
     public String defaultSuffix = ".jsp";
+
+    public String getUri(HttpServletRequest request) {
+        return request.getRequestURI().replace(request.getContextPath(), "");
+    }
 
     public Class getActionByUri(String uri) throws Exception {
         return Class.forName(getActionClassNameByUri(uri));
@@ -49,6 +71,10 @@ public class DispatchServlet extends HttpServlet {
             return "index";
         }
         return removeDefaultSuffix(uriParts[indexOfMethodName]);
+    }
+
+    public String getViewPage(String uri) {
+        return "/WEB-INF/jsp" + uri;
     }
 
     public String[] splitBySlash(String uri) {
