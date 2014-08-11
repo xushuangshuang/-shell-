@@ -32,6 +32,10 @@ public class DispatchServlet extends HttpServlet {
         return removeDefaultSuffix(uriParts[indexOfMethodName]);
     }
 
+    public String getViewPage(String uri) {
+        return "/WEB-INF/jsp" + uri;
+    }
+
     public String[] splitBySlash(String uri) {
         return uri.split("/");
     }
