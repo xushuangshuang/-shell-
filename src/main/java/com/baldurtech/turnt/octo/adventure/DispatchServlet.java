@@ -13,12 +13,17 @@ public class DispatchServlet extends HttpServlet {
 
     }
 
+    public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
+
     public String getActionClassNameByUri(String uri) {
         String[] uriParts = uri.split("/");
         Integer indexOfActionClassName = 1;
-        String actionClassName = uriParts[indexOfActionClassName];
-        actionClassName = actionClassName.substring(0, 1).toUpperCase()
-            + actionClassName.substring(1);
-        return "com.baldurtech.turnt.octo.adventure." + actionClassName + "Action";
+        String actionClassName = capitalize(uriParts[indexOfActionClassName]);
+        return defaultPackageName + "." + actionClassName + "Action";
+    }
+
+    public String capitalize(String str) {
+        return str.substring(0, 1).toUpperCase()
+            + str.substring(1);
     }
 }
