@@ -20,4 +20,8 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
     public void test_uri_contact_show_的处理方法是show() {
         assertEquals("show", dispatchServlet.getMethodNameByUri("/contact/show"));
     }
+
+    public void test_uri_contact_的处理方法是index() {
+        assertEquals("index", dispatchServlet.getMethodNameByUri("/contact"));
+    }
 }
