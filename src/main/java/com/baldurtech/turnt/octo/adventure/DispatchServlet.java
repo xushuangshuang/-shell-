@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 public class DispatchServlet extends HttpServlet {
 
@@ -44,8 +45,14 @@ public class DispatchServlet extends HttpServlet {
                 .forward(request, response);
         } catch(NoSuchMethodException me) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(ClassNotFoundException fe) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } catch(IllegalAccessException ae) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        } catch(InstantiationException ie) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        } catch(InvocationTargetException te) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -56,7 +63,7 @@ public class DispatchServlet extends HttpServlet {
         return request.getRequestURI().replace(request.getContextPath(), "");
     }
 
-    public Class getActionByUri(String uri) throws Exception {
+    public Class getActionByUri(String uri) throws ClassNotFoundException {
         return Class.forName(getActionClassNameByUri(uri));
     }
 
