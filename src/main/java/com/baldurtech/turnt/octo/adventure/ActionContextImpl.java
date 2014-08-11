@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ActionContextImpl implements ActionContext {
 
-    final ServletContext servletContext;
     final HttpServletRequest request;
     final HttpServletResponse response;
 
-    public ActionContextImpl(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
-        this.servletContext = servletContext;
+    public ActionContextImpl(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
