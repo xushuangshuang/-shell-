@@ -25,6 +25,9 @@ public class DispatchServlet extends HttpServlet {
     public String getMethodNameByUri(String uri) {
         String[] uriParts = uri.split("/");
         Integer indexOfMethodName = 2;
+        if(uriParts.length <= indexOfMethodName) {
+            return "index";
+        }
         return uriParts[indexOfMethodName];
     }
 
