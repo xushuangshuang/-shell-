@@ -29,11 +29,15 @@ public class DispatchServlet extends HttpServlet {
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return uriParts[indexOfMethodName].replace(methodSuffix, "");
+        return removeMethodSuffix(uriParts[indexOfMethodName]);
     }
 
     public String[] splitBySlash(String uri) {
         return uri.split("/");
+    }
+
+    public String removeMethodSuffix(String str) {
+        return str.replace(methodSuffix, "");
     }
 
     public String capitalize(String str) {
