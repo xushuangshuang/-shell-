@@ -1,5 +1,7 @@
 package com.baldurtech.turnt.octo.adventure;
 
+import java.io.PrintWriter;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.ServletContext;
@@ -16,6 +18,10 @@ public class ActionContextImpl implements ActionContext {
         this.servletContext = servletContext;
         this.request = request;
         this.response = response;
+    }
+
+    public PrintWriter getOut() throws IOException {
+        return response.getWriter();
     }
 
     public void setAttribute(String key, Object value) {

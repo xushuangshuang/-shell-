@@ -5,4 +5,7 @@ public class ContactAction extends Action {
         super(actionContext);
     }
 
+    public void index() {
+        println("Hi, contact!");
+    }
 }
