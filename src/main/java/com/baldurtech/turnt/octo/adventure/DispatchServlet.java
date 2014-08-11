@@ -23,7 +23,9 @@ public class DispatchServlet extends HttpServlet {
     }
 
     public String getMethodNameByUri(String uri) {
-        return null;
+        String[] uriParts = uri.split("/");
+        Integer indexOfMethodName = 2;
+        return uriParts[indexOfMethodName];
     }
 
     public String capitalize(String str) {
