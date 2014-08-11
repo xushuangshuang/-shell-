@@ -43,11 +43,12 @@ public class DispatchServlet extends HttpServlet {
                 .getRequestDispatcher(getViewPage(uri))
                 .forward(request, response);
         } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
     public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
-    public String defaultSuffix = ".jsp";
+    public String defaultSuffix = ".do";
 
     public String getUri(HttpServletRequest request) {
         return request.getRequestURI().replace(request.getContextPath(), "");
@@ -74,7 +75,7 @@ public class DispatchServlet extends HttpServlet {
     }
 
     public String getViewPage(String uri) {
-        return "/WEB-INF/jsp" + uri;
+        return "/WEB-INF/jsp" + removeDefaultSuffix(uri) + ".jsp" ;
     }
 
     public String[] splitBySlash(String uri) {
