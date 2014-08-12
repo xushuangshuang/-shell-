@@ -27,22 +27,11 @@ public class DispatchServlet extends HttpServlet {
             @SuppressWarnings("unchecked")
             Method method = actionClass.getDeclaredMethod(getMethodNameByUri(uri));
             Object returnValue = method.invoke(actionInstance);
-            if(null == returnValue) {
-                return;
-            }
 
-            if(returnValue instanceof Map) {
-                @SuppressWarnings("unchecked")
-                Map<String, Object> dataModel = (Map<String, Object>)returnValue;
-                for(String key: dataModel.keySet()) {
-                    request.setAttribute(key, dataModel.get(key));
-                }
-            } else {
-                request.setAttribute("data", returnValue);
+            if(null != returnValue) {
+                TemplateEngine template = new JspTemplateEngine(getServletContext(), request, response);
+                template.merge(getViewPage(uri), returnValue);
             }
-            getServletContext()
-                .getRequestDispatcher(getViewPage(uri))
-                .forward(request, response);
         } catch(NoSuchMethodException me) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         } catch(ClassNotFoundException fe) {
