@@ -21,29 +21,3 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
         assertEquals("contact/list", actionContext.redirectActionParam);
     }
 }
-
-class ActionContextMock implements ActionContext {
-
-    public String redirectActionParam;
-
-    Map<String, String> params = new HashMap<String, String>();
-    public void setParameter(String name, String value) {
-        params.put(name, value);
-    }
-
-    public String getParameter(String name) {
-        return params.get(name);
-    }
-
-    public void redirectAction(String actionUri) {
-        this.redirectActionParam = actionUri;
-    }
-
-    public PrintWriter getOut() throws IOException {
-        return new PrintWriter(new StringWriter());
-    }
-
-    public void setAttribute(String key, Object value) {
-
-    }
-}
