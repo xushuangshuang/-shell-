@@ -25,4 +25,16 @@ public class ActionContextImpl implements ActionContext {
     public void setAttribute(String key, Object value) {
         request.setAttribute(key, value);
     }
+
+    public String getParameter(String name) {
+        return request.getParameter(name);
+    }
+
+    public void redirectAction(String actionUri) {
+        try {
+            response.sendRedirect(actionUri + ".do");
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
 }

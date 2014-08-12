@@ -11,4 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface ActionContext {
     public PrintWriter getOut() throws IOException;
     public void setAttribute(String key, Object value);
+    public String getParameter(String name);
+    public void redirectAction(String actionUri);
 }
