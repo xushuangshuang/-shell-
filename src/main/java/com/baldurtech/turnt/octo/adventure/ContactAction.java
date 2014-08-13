@@ -3,6 +3,8 @@ package com.baldurtech.turnt.octo.adventure;
 import java.util.Map;
 import java.util.HashMap;
 
+import static com.baldurtech.turnt.octo.adventure.StringUtils.isNotBlank;
+
 public class ContactAction extends Action {
     final private ContactManager contactManager;
 
@@ -17,14 +19,6 @@ public class ContactAction extends Action {
 
     public void index() {
         actionContext.redirectAction("contact/list");
-    }
-
-    boolean isBlank(String str) {
-        return str == null || str.trim().length() == 0;
-    }
-
-    boolean isNotBlank(String str) {
-        return !isBlank(str);
     }
 
     Long getParameterLong(String param) {
