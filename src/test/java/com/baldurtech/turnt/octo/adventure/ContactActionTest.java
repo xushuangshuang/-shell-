@@ -35,7 +35,7 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
 
         action.save();
 
-        assertEquals("contact/list", actionContext.redirectActionParam);
+        assertEquals("contact/show?id=1", actionContext.redirectActionParam);
     }
 
     public void test_save_保存失败后要返回到创建页面重新修改() {

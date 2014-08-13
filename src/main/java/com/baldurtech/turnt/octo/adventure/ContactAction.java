@@ -41,7 +41,7 @@ public class ContactAction extends Action {
 
         Contact savedContact = contactManager.save(contact);
         if(savedContact.isPersistent()) {
-            actionContext.redirectAction("contact/list");
+            actionContext.redirectAction("contact/show?id=" + savedContact.getId());
         } else {
             actionContext.flashMessage("Cannot save Contact!");
             actionContext.forwardAction("contact/create", new HashMap<String, Object>(){{
