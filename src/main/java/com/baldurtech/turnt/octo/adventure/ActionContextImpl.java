@@ -35,10 +35,14 @@ public class ActionContextImpl implements ActionContext {
 
     public void redirectAction(String actionUri) {
         try {
-            response.sendRedirect(actionUri + ".do");
+            response.sendRedirect(toRealUri(actionUri));
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    public String toRealUri(String actionUri) {
+        return actionUri + ".do";
     }
 
     public void forwardAction(String uri, Map<String, Object> data) {
