@@ -36,7 +36,7 @@ public class ContactAction extends Action {
 
         Contact savedContact = contactManager.save(contact);
         if(savedContact.isPersistent()) {
-
+            actionContext.redirectAction("contact/list");
         } else {
 
         }
