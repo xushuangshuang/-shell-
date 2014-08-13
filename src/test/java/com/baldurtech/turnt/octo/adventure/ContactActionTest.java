@@ -41,6 +41,15 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
         assertEquals(1L, ((Contact)result.get("contact")).getId());
     }
 
+    public void test_show_当id有效但对应的Contact不存在时应该跳转到list() {
+        actionContext.setParameter("id", "1");
+
+        Map<String, Object> result = action.show();
+
+        assertEquals("contact/list", actionContext.redirectActionParam);
+        assertEquals("Contact not found!", actionContext.flashMessageParamMsg);
+    }
+
     public void test_save_保存成功后要跳转到list() {
         contactManager.saveShouldReturn = createPersistentContactWithId(1L);
 
