@@ -15,10 +15,16 @@ public class ActionContextImpl implements ActionContext {
     final HttpServletRequest request;
     final HttpServletResponse response;
 
+    String contextPath = "";
+
     public ActionContextImpl(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
         this.servletContext = servletContext;
         this.request = request;
         this.response = response;
+
+        if(null != request) {
+            contextPath = request.getContextPath();
+        }
     }
 
     public PrintWriter getOut() throws IOException {
@@ -43,9 +49,9 @@ public class ActionContextImpl implements ActionContext {
 
     public String toRealUri(String actionUri) {
         if(actionUri.indexOf("?") > 0) {
-            return actionUri.replace("?", ".do?");
+            return contextPath + "/" + actionUri.replace("?", ".do?");
         }
-        return actionUri + ".do";
+        return contextPath + "/" + actionUri + ".do";
     }
 
     public void forwardAction(String uri, Map<String, Object> data) {
