@@ -36,10 +36,11 @@ public class MiniatureSpiceTestCase {
 
             try {
                 // Object obj = new FizzBuzz();
-                Object obj = clazz.newInstance();
+                MiniatureSpiceTestCase testCase = (MiniatureSpiceTestCase) clazz.newInstance();
 
                 // obj.methodName();
-                method.invoke(obj, new Object[]{});
+                testCase.setup();
+                method.invoke(testCase);
             } catch(Exception e) {
                 testResult = false;
                 System.out.println("Unexpected exception!");
@@ -57,6 +58,10 @@ public class MiniatureSpiceTestCase {
             }
         }
         return testMethods;
+    }
+
+    public void setup() {
+
     }
 
     public static void assertEquals(String expectedResult, String actualResult) {

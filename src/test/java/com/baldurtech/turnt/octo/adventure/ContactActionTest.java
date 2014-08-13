@@ -25,16 +25,12 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
     }
 
     public void test_show_当id为空的时候应该跳转到list() {
-        setup();
-
         action.show();
 
         assertEquals("contact/list", actionContext.redirectActionParam);
     }
 
     public void test_save_保存成功后要跳转到list() {
-        setup();
-
         contactManager.saveShouldReturn = createPersistentContactWithId(1L);
 
         action.save();
