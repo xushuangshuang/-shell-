@@ -1,6 +1,6 @@
 package com.baldurtech.turnt.octo.adventure;
 
-public class Contact {
+public class Contact extends AbstractDomain {
     Long id;
     String name;
     String mobile;
