@@ -14,7 +14,7 @@
 
   <servlet>
     <servlet-name>dispatch</servlet-name>
-    <servlet-class>com.baldurtech.turnt.octo.adventure.DispatchServlet</servlet-class>
+    <servlet-class>com.baldurtech.turnt.octo.adventure.servlet.DispatchServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

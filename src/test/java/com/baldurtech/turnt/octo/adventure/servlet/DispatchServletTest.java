@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.servlet;
 
 import com.baldurtech.unit.MiniatureSpiceTestCase;
 
