@@ -27,6 +27,11 @@ public class ContactAction extends Action {
         }
         Long id = Long.parseLong(paramId);
         final Contact contact = contactManager.getById(id);
+        if(contact == null) {
+            actionContext.flashMessage("Contact not found!");
+            actionContext.redirectAction("contact/list");
+            return null;
+        }
         return new HashMap<String, Object>(){{
                 put("contact", contact);
             }};
