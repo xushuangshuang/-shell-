@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.action;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.baldurtech.turnt.octo.adventure.ContactManagerMock;
 import com.baldurtech.turnt.octo.adventure.domain.Contact;
 
 import com.baldurtech.unit.MiniatureSpiceTestCase;

@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.action;
 
 import java.io.IOException;
 import java.io.StringWriter;

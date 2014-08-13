@@ -1,9 +1,11 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.action;
 
 import java.util.Map;
 import java.util.HashMap;
 
 import com.baldurtech.turnt.octo.adventure.domain.Contact;
+import com.baldurtech.turnt.octo.adventure.ContactManager;
+import com.baldurtech.turnt.octo.adventure.ContactManagerImpl;
 
 import static com.baldurtech.turnt.octo.adventure.utils.StringUtils.isNotBlank;
 

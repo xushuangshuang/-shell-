@@ -13,9 +13,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-import com.baldurtech.turnt.octo.adventure.Action;
-import com.baldurtech.turnt.octo.adventure.ActionContext;
-import com.baldurtech.turnt.octo.adventure.ActionContextImpl;
+import com.baldurtech.turnt.octo.adventure.action.Action;
+import com.baldurtech.turnt.octo.adventure.action.ActionContext;
+import com.baldurtech.turnt.octo.adventure.action.ActionContextImpl;
 import com.baldurtech.turnt.octo.adventure.template.TemplateEngine;
 import com.baldurtech.turnt.octo.adventure.template.JspTemplateEngine;
 
