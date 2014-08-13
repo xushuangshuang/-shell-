@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.baldurtech.turnt.octo.adventure.domain.Contact;
+
 import com.baldurtech.unit.MiniatureSpiceTestCase;
 
 public class ContactActionTest extends MiniatureSpiceTestCase {

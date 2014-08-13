@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.domain;
 
 public class Contact extends AbstractDomain {
     Long id;

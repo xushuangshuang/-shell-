@@ -3,6 +3,8 @@ package com.baldurtech.turnt.octo.adventure;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.baldurtech.turnt.octo.adventure.domain.Contact;
+
 import static com.baldurtech.turnt.octo.adventure.utils.StringUtils.isNotBlank;
 
 public class ContactAction extends Action {

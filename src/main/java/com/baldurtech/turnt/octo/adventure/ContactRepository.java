@@ -1,5 +1,7 @@
 package com.baldurtech.turnt.octo.adventure;
 
+import com.baldurtech.turnt.octo.adventure.domain.Contact;
+
 public class ContactRepository {
 
     private DatabaseManager db;

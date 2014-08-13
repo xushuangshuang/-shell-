@@ -2,6 +2,8 @@ package com.baldurtech.turnt.octo.adventure;
 
 import com.baldurtech.unit.MiniatureSpiceTestCase;
 
+import com.baldurtech.turnt.octo.adventure.domain.Contact;
+
 public class ContactRepositoryTest extends MiniatureSpiceTestCase {
 
     public void test_根据指定id删除Contact() {
