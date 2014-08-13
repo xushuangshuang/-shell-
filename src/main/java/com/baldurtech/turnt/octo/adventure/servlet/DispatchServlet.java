@@ -56,7 +56,7 @@ public class DispatchServlet extends HttpServlet {
         }
     }
 
-    public String defaultPackageName = "com.baldurtech.turnt.octo.adventure";
+    public String defaultPackageName = "com.baldurtech.turnt.octo.adventure.action";
     public String defaultSuffix = ".do";
 
     public String getUri(HttpServletRequest request) {

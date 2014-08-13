@@ -5,7 +5,7 @@ import com.baldurtech.unit.MiniatureSpiceTestCase;
 public class DispatchServletTest extends MiniatureSpiceTestCase {
 
     DispatchServlet dispatchServlet = new DispatchServlet();
-    String contactActionClassName = "com.baldurtech.turnt.octo.adventure.ContactAction";
+    String contactActionClassName = "com.baldurtech.turnt.octo.adventure.action.ContactAction";
 
     public void test_uri_contact_show_应该由ContactAction来处理() {
         assertEquals(contactActionClassName

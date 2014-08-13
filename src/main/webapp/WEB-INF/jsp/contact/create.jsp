@@ -1,4 +1,4 @@
-<%@ page import="java.util.List, com.baldurtech.turnt.octo.adventure.Contact" %>
+<%@ page import="java.util.List, com.baldurtech.turnt.octo.adventure.domain.Contact" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 Contact contact = (Contact) request.getAttribute("contact");

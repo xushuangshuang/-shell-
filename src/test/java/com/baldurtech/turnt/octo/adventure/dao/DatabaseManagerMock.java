@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.dao;
 
 public class DatabaseManagerMock implements DatabaseManager {
     public String executeUpdateParam;
