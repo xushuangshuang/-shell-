@@ -47,7 +47,6 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
         Map<String, Object> result = action.show();
 
         assertEquals("contact/list", actionContext.redirectActionParam);
-        assertEquals("Contact not found!", actionContext.flashMessageParamMsg);
     }
 
     public void test_save_保存成功后要跳转到list() {

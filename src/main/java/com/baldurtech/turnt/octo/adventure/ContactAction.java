@@ -19,16 +19,25 @@ public class ContactAction extends Action {
         actionContext.redirectAction("contact/list");
     }
 
-    public Map<String, Object> show() {
-        String paramId = actionContext.getParameter("id");
-        if(paramId == null || paramId.trim().length() == 0) {
-            actionContext.redirectAction("contact/list");
-            return null;
+    boolean isBlank(String str) {
+        return str == null || str.trim().length() == 0;
+    }
+
+    boolean isNotBlank(String str) {
+        return !isBlank(str);
+    }
+
+    Long getParameterLong(String param) {
+        String paramLong = actionContext.getParameter(param);
+        if(isNotBlank(paramLong)) {
+            return Long.parseLong(paramLong);
         }
-        Long id = Long.parseLong(paramId);
-        final Contact contact = contactManager.getById(id);
+        return null;
+    }
+
+    public Map<String, Object> show() {
+        final Contact contact = contactManager.getById(getParameterLong("id"));
         if(contact == null) {
-            actionContext.flashMessage("Contact not found!");
             actionContext.redirectAction("contact/list");
             return null;
         }
