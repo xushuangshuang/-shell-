@@ -33,14 +33,19 @@ public class DispatchServlet extends HttpServlet {
                 template.merge(getViewPage(uri), returnValue);
             }
         } catch(NoSuchMethodException me) {
+            me.printStackTrace();
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         } catch(ClassNotFoundException fe) {
+            fe.printStackTrace();
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         } catch(IllegalAccessException ae) {
+            ae.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         } catch(InstantiationException ie) {
+            ie.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         } catch(InvocationTargetException te) {
+            te.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
