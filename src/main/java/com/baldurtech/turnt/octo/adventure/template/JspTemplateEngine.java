@@ -1,4 +1,4 @@
-package com.baldurtech.turnt.octo.adventure;
+package com.baldurtech.turnt.octo.adventure.template;
 
 import java.util.Map;
 import java.util.HashMap;
