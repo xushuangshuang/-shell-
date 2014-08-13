@@ -61,6 +61,12 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
         assertEquals("Cannot save Contact!", actionContext.flashMessageParamMsg);
     }
 
+    public void test_index_应该始终跳转到list() {
+        action.index();
+
+        assertEquals("contact/list", actionContext.redirectActionParam);
+    }
+
     public Contact createPersistentContactWithId(Long id) {
         Contact contact = new Contact();
         contact.setId(id);
