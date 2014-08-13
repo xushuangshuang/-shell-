@@ -42,6 +42,9 @@ public class ActionContextImpl implements ActionContext {
     }
 
     public String toRealUri(String actionUri) {
+        if(actionUri.indexOf("?") > 0) {
+            return actionUri.replace("?", ".do?");
+        }
         return actionUri + ".do";
     }
 
