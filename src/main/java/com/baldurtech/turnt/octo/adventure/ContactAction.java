@@ -21,7 +21,7 @@ public class ContactAction extends Action {
     }
 
     public void save() {
-        Contact contact = new Contact();
+        final Contact contact = new Contact();
         contact.setName(actionContext.getParameter("name"));
         contact.setMobile(actionContext.getParameter("mobile"));
         contact.setVpmn(actionContext.getParameter("vpmn"));
@@ -38,7 +38,9 @@ public class ContactAction extends Action {
         if(savedContact.isPersistent()) {
             actionContext.redirectAction("contact/list");
         } else {
-
+            actionContext.forwardAction("contact/create", new HashMap<String, Object>(){{
+                        put("contact", contact);
+                    }});
         }
     }
 }
