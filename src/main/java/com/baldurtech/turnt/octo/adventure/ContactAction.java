@@ -16,7 +16,7 @@ public class ContactAction extends Action {
     }
 
     public void index() {
-        println("Hi, contact!");
+        actionContext.redirectAction("contact/list");
     }
 
     public Map<String, Object> show() {
