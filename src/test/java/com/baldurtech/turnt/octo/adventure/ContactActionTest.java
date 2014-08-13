@@ -10,13 +10,22 @@ import com.baldurtech.unit.MiniatureSpiceTestCase;
 
 public class ContactActionTest extends MiniatureSpiceTestCase {
 
+    ContactManagerMock contactManager;
+
+    ActionContextMock actionContext;
+
+    ContactAction action;
+
+    public void setup() {
+        contactManager = new ContactManagerMock();
+
+        actionContext = new ActionContextMock();
+
+        action = new ContactAction(actionContext, contactManager);
+    }
+
     public void test_show_当id为空的时候应该跳转到list() {
-        ContactManagerMock contactManager = new ContactManagerMock();
-
-        ActionContextMock actionContext = new ActionContextMock();
-        actionContext.setParameter("id", null);
-
-        ContactAction action = new ContactAction(actionContext, contactManager);
+        setup();
 
         action.show();
 
@@ -24,20 +33,20 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
     }
 
     public void test_save_保存成功后要跳转到list() {
-        ActionContextMock actionContext = new ActionContextMock();
-        actionContext.setParameter("id", null);
+        setup();
 
-        Contact contact = new Contact();
-        contact.setId(1L);
-        contact.setPersistent(true);
-
-        ContactManagerMock contactManager = new ContactManagerMock();
-        contactManager.saveShouldReturn = contact;
-
-        ContactAction action = new ContactAction(actionContext, contactManager);
+        contactManager.saveShouldReturn = createPersistentContactWithId(1L);
 
         action.save();
 
         assertEquals("contact/list", actionContext.redirectActionParam);
+    }
+
+    public Contact createPersistentContactWithId(Long id) {
+        Contact contact = new Contact();
+        contact.setId(id);
+        contact.setPersistent(true);
+
+        return contact;
     }
 }
