@@ -43,6 +43,7 @@ public class ContactAction extends Action {
         if(savedContact.isPersistent()) {
             actionContext.redirectAction("contact/list");
         } else {
+            actionContext.flashMessage("Cannot save Contact!");
             actionContext.forwardAction("contact/create", new HashMap<String, Object>(){{
                         put("contact", contact);
                     }});

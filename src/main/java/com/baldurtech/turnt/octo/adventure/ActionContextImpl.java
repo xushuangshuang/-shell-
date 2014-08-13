@@ -54,4 +54,8 @@ public class ActionContextImpl implements ActionContext {
 
         }
     }
+
+    public void flashMessage(String msg) {
+        request.setAttribute("flash.message", msg);
+    }
 }

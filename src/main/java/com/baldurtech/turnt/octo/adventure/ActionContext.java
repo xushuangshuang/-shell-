@@ -15,4 +15,5 @@ public interface ActionContext {
     public String getParameter(String name);
     public void redirectAction(String actionUri);
     public void forwardAction(String uri, Map<String, Object> data);
+    public void flashMessage(String msg);
 }

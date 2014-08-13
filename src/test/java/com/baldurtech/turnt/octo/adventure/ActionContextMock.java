@@ -11,6 +11,7 @@ public class ActionContextMock implements ActionContext {
     public String redirectActionParam;
     public String forwardActionParamUri;
     public Map<String, Object> forwardActionParamData = new HashMap<String, Object>();
+    public String flashMessageParamMsg;
 
     Map<String, String> params = new HashMap<String, String>();
     public void setParameter(String name, String value) {
@@ -28,6 +29,10 @@ public class ActionContextMock implements ActionContext {
     public void forwardAction(String uri, Map<String, Object> data) {
         forwardActionParamUri = uri;
         forwardActionParamData = data;
+    }
+
+    public void flashMessage(String msg) {
+        flashMessageParamMsg = msg;
     }
 
     public PrintWriter getOut() throws IOException {

@@ -47,6 +47,7 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
 
         assertEquals("contact/create", actionContext.forwardActionParamUri);
         assertTrue(null != actionContext.forwardActionParamData.get("contact"));
+        assertEquals("Cannot save Contact!", actionContext.flashMessageParamMsg);
     }
 
     public Contact createPersistentContactWithId(Long id) {
