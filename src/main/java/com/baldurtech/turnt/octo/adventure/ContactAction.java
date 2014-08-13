@@ -20,8 +20,16 @@ public class ContactAction extends Action {
     }
 
     public Map<String, Object> show() {
-        actionContext.redirectAction("contact/list");
-        return new HashMap<String, Object>();
+        String paramId = actionContext.getParameter("id");
+        if(paramId == null || paramId.trim().length() == 0) {
+            actionContext.redirectAction("contact/list");
+            return null;
+        }
+        Long id = Long.parseLong(paramId);
+        final Contact contact = contactManager.getById(id);
+        return new HashMap<String, Object>(){{
+                put("contact", contact);
+            }};
     }
 
     public void save() {

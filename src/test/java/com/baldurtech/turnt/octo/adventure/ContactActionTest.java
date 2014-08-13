@@ -37,7 +37,8 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
 
         Map<String, Object> result = action.show();
 
-        assertEquals(1, ((Contact)result.get("contact")).getId());
+        assertTrue(null == actionContext.redirectActionParam);
+        assertEquals(1L, ((Contact)result.get("contact")).getId());
     }
 
     public void test_save_保存成功后要跳转到list() {
