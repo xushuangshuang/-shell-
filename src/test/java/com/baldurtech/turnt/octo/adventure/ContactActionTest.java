@@ -39,6 +39,8 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
     }
 
     public void test_save_保存失败后要返回到创建页面重新修改() {
+        actionContext.setParameter("jobLevel", "  ");
+
         contactManager.saveShouldReturn = new Contact();
 
         action.save();

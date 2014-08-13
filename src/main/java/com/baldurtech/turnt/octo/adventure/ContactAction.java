@@ -6,6 +6,10 @@ import java.util.HashMap;
 public class ContactAction extends Action {
     final private ContactManager contactManager;
 
+    public ContactAction(ActionContext actionContext) {
+        this(actionContext, new ContactManagerImpl());
+    }
+
     public ContactAction(ActionContext actionContext, ContactManager contactManager) {
         super(actionContext);
         this.contactManager = contactManager;
@@ -30,8 +34,9 @@ public class ContactAction extends Action {
         contact.setOfficeAddress(actionContext.getParameter("officeAddress"));
         contact.setMemo(actionContext.getParameter("memo"));
         contact.setJob(actionContext.getParameter("job"));
-        if(actionContext.getParameter("jobLevel") != null) {
-            contact.setJobLevel(Integer.parseInt(actionContext.getParameter("jobLevel")));
+        String paramJobLevel = actionContext.getParameter("jobLevel");
+        if(paramJobLevel != null && paramJobLevel.trim().length() > 0) {
+            contact.setJobLevel(Integer.parseInt(paramJobLevel));
         }
 
         Contact savedContact = contactManager.save(contact);
@@ -42,5 +47,9 @@ public class ContactAction extends Action {
                         put("contact", contact);
                     }});
         }
+    }
+
+    public Contact create() {
+        return new Contact();
     }
 }
