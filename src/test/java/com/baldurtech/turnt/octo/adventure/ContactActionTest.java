@@ -38,6 +38,15 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
         assertEquals("contact/list", actionContext.redirectActionParam);
     }
 
+    public void test_save_保存失败后要返回到创建页面重新修改() {
+        contactManager.saveShouldReturn = new Contact();
+
+        action.save();
+
+        assertEquals("contact/create", actionContext.forwardActionParamUri);
+        assertTrue(null != actionContext.forwardActionParamData.get("contact"));
+    }
+
     public Contact createPersistentContactWithId(Long id) {
         Contact contact = new Contact();
         contact.setId(id);

@@ -1,6 +1,7 @@
 package com.baldurtech.turnt.octo.adventure;
 
 import java.io.PrintWriter;
+import java.util.Map;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ActionContextImpl implements ActionContext {
 
+    final ServletContext servletContext;
     final HttpServletRequest request;
     final HttpServletResponse response;
 
-    public ActionContextImpl(HttpServletRequest request, HttpServletResponse response) {
+    public ActionContextImpl(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
+        this.servletContext = servletContext;
         this.request = request;
         this.response = response;
     }
@@ -35,6 +38,20 @@ public class ActionContextImpl implements ActionContext {
             response.sendRedirect(actionUri + ".do");
         } catch(IOException ioe) {
             ioe.printStackTrace();
+        }
+    }
+
+    public void forwardAction(String uri, Map<String, Object> data) {
+        try {
+            for(String key: data.keySet()) {
+                request.setAttribute(key, data.get(key));
+            }
+
+            servletContext.getRequestDispatcher("/" + uri + ".do").forward(request, response);
+        } catch(IOException ie) {
+
+        } catch(ServletException se) {
+
         }
     }
 }

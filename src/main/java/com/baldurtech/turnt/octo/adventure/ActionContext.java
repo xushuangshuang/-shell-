@@ -1,6 +1,7 @@
 package com.baldurtech.turnt.octo.adventure;
 
 import java.io.PrintWriter;
+import java.util.Map;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,4 +14,5 @@ public interface ActionContext {
     public void setAttribute(String key, Object value);
     public String getParameter(String name);
     public void redirectAction(String actionUri);
+    public void forwardAction(String uri, Map<String, Object> data);
 }

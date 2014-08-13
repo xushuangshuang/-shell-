@@ -19,7 +19,7 @@ public class DispatchServlet extends HttpServlet {
         throws IOException, ServletException {
         try {
             String uri = getUri(request);
-            ActionContext actionContext = new ActionContextImpl(request, response);
+            ActionContext actionContext = new ActionContextImpl(getServletContext(), request, response);
             Class actionClass = getActionByUri(uri);
             @SuppressWarnings("unchecked")
             Constructor actionConstructor = actionClass.getDeclaredConstructor(ActionContext.class);
