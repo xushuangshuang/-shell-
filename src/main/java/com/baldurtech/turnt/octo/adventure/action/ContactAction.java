@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 import com.baldurtech.turnt.octo.adventure.domain.Contact;
-import com.baldurtech.turnt.octo.adventure.ContactManager;
-import com.baldurtech.turnt.octo.adventure.ContactManagerImpl;
+import com.baldurtech.turnt.octo.adventure.manager.ContactManager;
+import com.baldurtech.turnt.octo.adventure.manager.ContactManagerImpl;
 
 import static com.baldurtech.turnt.octo.adventure.utils.StringUtils.isNotBlank;
 
