@@ -3,7 +3,7 @@ package com.baldurtech.turnt.octo.adventure;
 import java.util.Map;
 import java.util.HashMap;
 
-import static com.baldurtech.turnt.octo.adventure.StringUtils.isNotBlank;
+import static com.baldurtech.turnt.octo.adventure.utils.StringUtils.isNotBlank;
 
 public class ContactAction extends Action {
     final private ContactManager contactManager;
