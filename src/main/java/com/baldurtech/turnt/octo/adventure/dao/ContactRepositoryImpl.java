@@ -6,6 +6,10 @@ public class ContactRepositoryImpl implements ContactRepository {
 
     private DatabaseManager db;
 
+    public ContactRepositoryImpl() {
+        this(null);
+    }
+
     public ContactRepositoryImpl(DatabaseManager db) {
         this.db = db;
     }
