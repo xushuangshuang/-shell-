@@ -4,11 +4,11 @@ import com.baldurtech.unit.MiniatureSpiceTestCase;
 
 import com.baldurtech.turnt.octo.adventure.domain.Contact;
 
-public class ContactRepositoryTest extends MiniatureSpiceTestCase {
+public class ContactRepositoryImplTest extends MiniatureSpiceTestCase {
 
     public void test_根据指定id删除Contact() {
         DatabaseManagerMock db = new DatabaseManagerMock();
-        ContactRepository contactRepository = new ContactRepository(db);
+        ContactRepository contactRepository = new ContactRepositoryImpl(db);
 
         contactRepository.deleteById(1L);
 
@@ -17,7 +17,7 @@ public class ContactRepositoryTest extends MiniatureSpiceTestCase {
 
     public void test_更新指定的Contact() {
         DatabaseManagerMock db = new DatabaseManagerMock();
-        ContactRepository contactRepository = new ContactRepository(db);
+        ContactRepository contactRepository = new ContactRepositoryImpl(db);
 
         Contact contact = new Contact();
         contact.setId(1L);
