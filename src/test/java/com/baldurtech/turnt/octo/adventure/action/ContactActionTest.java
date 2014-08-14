@@ -49,6 +49,7 @@ public class ContactActionTest extends MiniatureSpiceTestCase {
 
         Map<String, Object> result = action.show();
 
+        assertEquals(1L, contactManager.getByIdActualParamId);
         assertEquals("contact/list", actionContext.redirectActionParam);
     }
 
