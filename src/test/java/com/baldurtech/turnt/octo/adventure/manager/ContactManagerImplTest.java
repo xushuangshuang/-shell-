@@ -21,4 +21,16 @@ public class ContactManagerImplTest extends MiniatureSpiceTestCase {
 
         assertEquals(1L, contactRepository.getByIdActualParamId);
     }
+    
+    public void test_getById_当id对应的Contact不存在就返回null() {
+        ContactRepositoryMock contactRepository = new ContactRepositoryMock();
+
+        ContactManagerImpl contactManager = new ContactManagerImpl(contactRepository);
+
+        contactRepository.getByIdShouldReturn = null;
+
+        assertNull(contactManager.getById(1L));
+
+        assertEquals(1L, contactRepository.getByIdActualParamId);
+    }
 }
