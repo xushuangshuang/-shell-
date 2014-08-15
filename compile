@@ -5,26 +5,26 @@ echo "Compile"
 
 mkdir -p target/classes target/test-classes
 
-CLASSPATH=target/classes:target/test-classes
+CLASSPATH="target/classes;target/test-classes"
 
 for JARFILE in lib/*.jar; do
-    CLASSPATH=$CLASSPATH:$JARFILE
+    CLASSPATH="$CLASSPATH;$JARFILE"
 done
 
-CLASSPATH_RUNTIME=$CLASSPATH
+CLASSPATH_RUNTIME="$CLASSPATH"
 [[ -d lib-runtime ]] && for JARFILE in lib-runtime/*.jar; do
-    CLASSPATH_RUNTIME=$CLASSPATH_RUNTIME:$JARFILE
+    CLASSPATH_RUNTIME="$CLASSPATH_RUNTIME;$JARFILE"
 done
 
 CLASSPATH_TEST=$CLASSPATH_RUNTIME
 [[ -d lib-test ]] && for JARFILE in lib-test/*.jar; do
-    CLASSPATH_TEST=$CLASSPATH_TEST:$JARFILE
+    CLASSPATH_TEST="$CLASSPATH_TEST;$JARFILE"
 done
 
 JAVAC_OPTS="-Xlint:unchecked"
 
-find src/main/java -type f -name \*.java | xargs javac "$JAVAC_OPTS" -d target/classes -classpath $CLASSPATH
+find src/main/java -type f -name \*.java | xargs javac -encoding "UTF-8" -d target/classes -classpath "$CLASSPATH_TEST"
 
-find src/test/java -type f -name \*.java | xargs javac "$JAVAC_OPTS" -d target/test-classes -classpath $CLASSPATH_TEST
+find src/test/java -type f -name \*.java | xargs javac -encoding "UTF-8" -d target/test-classes -classpath "$CLASSPATH_TEST"
 
 echo "Compile done"
