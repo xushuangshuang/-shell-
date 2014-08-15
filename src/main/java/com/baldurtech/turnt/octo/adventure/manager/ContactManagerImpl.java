@@ -17,6 +17,9 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     public Contact getById(Long id) {
+        if(null == id ) {
+            return null;
+        }
         return contactRepository.getById(id);
     }
 
