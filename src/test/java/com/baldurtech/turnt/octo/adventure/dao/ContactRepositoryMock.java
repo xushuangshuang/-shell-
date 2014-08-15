@@ -6,13 +6,14 @@ public class ContactRepositoryMock implements ContactRepository {
 
     public Long getByIdActualParamId;
     public Contact getByIdShouldReturn;
-
+    public boolean getByIdHasInvoked = false;
     public Long deleteByIdActualParamId;
 
     public Contact updateParamContact;
 
     public Contact getById(Long id) {
         getByIdActualParamId = id;
+        getByIdHasInvoked = true;
         return getByIdShouldReturn;
     }
 
